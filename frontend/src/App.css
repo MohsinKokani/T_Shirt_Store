@@ -1,0 +1,30 @@
+::-webkit-scrollbar {
+    height: 0.7rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+body::-webkit-scrollbar {
+    width: 0.7rem;
+}
+
+.v-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pageTitle {
+    display: table;
+    margin: auto;
+    padding: 1rem;
+    border-bottom: 1px solid grey;
+    margin-bottom: 1rem;
+}
