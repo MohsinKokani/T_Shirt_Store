@@ -154,7 +154,7 @@ class userController {
                       <h2 style="color: #333;">T-shirt Store Password Reset</h2>
                       <p style="margin-top: 10px;">Your reset password link expires in 15 minutes.</p>
                       <p style="margin-top: 5px;">Click the button below to reset your password:</p>
-                      <a href="${req.protocol}://${req.hostname}${process.env.PORT ? `:${process.env.PORT}` : ''}/user/resetPasswordForm/${token}" style="display: inline-block; background-color: #007BFF; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; margin-top: 10px;">Reset Password</a>
+                      <a href="${req.protocol}://${req.hostname}/user/resetPasswordForm/${token}" style="display: inline-block; background-color: #007BFF; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 5px; margin-top: 10px;">Reset Password</a>
                       <p style="margin-top: 20px;">If you didn't request a password reset, please ignore this email.</p>
                       <p style="margin-top: 5px;">Best regards,<br>T-shirt Store Team</p>
                     </div>
