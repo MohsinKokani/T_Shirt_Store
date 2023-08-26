@@ -51,9 +51,8 @@ body {
 
 .prodDetail>.name {
     font-weight: 300;
-    font-size: 52px;
+    font-size: 2rem;
     color: #43484D;
-    letter-spacing: -2px;
 }
 
 .prodDescription {
@@ -223,5 +222,11 @@ body {
     .left-column img {
         width: 220px;
         top: -85px;
+    }
+}
+
+@media (min-width: 735px) {
+    .prodDetail>.name {
+        font-size: 4rem;
     }
 }

@@ -68,15 +68,22 @@ const Register = () => {
                 if (e.target.name === "avatar") {
                   const selectedFile = e.target.files[0];
                   if (selectedFile) {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(selectedFile);
-                    reader.onload = () => {
-                      if (reader.readyState === 2) {
-                        setAvatar(reader.result);
+                    const fileSize = selectedFile.size;
+                    if (fileSize < 60 * 1024) {
+                      const reader = new FileReader();
+                      reader.readAsDataURL(selectedFile);
+                      reader.onload = () => {
+                        if (reader.readyState === 2) {
+                          setAvatar(reader.result);
+                        }
                       }
-                    };
+                    } else {
+                      alert('Size exceeds 60kb');
+                      e.target.value = ''
+                      setAvatar('')
+                    }
                   } else {
-                    setAvatar(previewAvatar)
+                    setAvatar('')
                   }
                 }
               }}
