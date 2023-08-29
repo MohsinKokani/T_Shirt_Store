@@ -27,6 +27,11 @@ const userReducer = (state = { user: {}, isAuthenticated: false }, action) => {
                 loading: false,
                 isAuthenticated: false
             }
+        case 'LOGOUT_FAIL':
+            alert('Logout Failed')
+            return {
+                ...state
+            }
         case 'LOGOUT_SUCCESS':
             return {
                 loading: false,

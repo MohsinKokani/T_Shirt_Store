@@ -14,18 +14,17 @@ const login = (email, password) => {
             fetch(`${process.env.REACT_APP_FETCH_DOMAIN}/user/login`, options)
                 .then(response => response.json())
                 .then(response => {
+                    if (!response.success) {
+                        return dispatch({
+                            type: 'LOGIN_FAIL',
+                            payload: response.message || 'Error while login',
+                        });
+                    }
                     dispatch({
                         type: 'LOGIN_SUCCESS',
                         payload: response,
                     });
                 })
-                .catch(error => {
-                    console.log(error)
-                    dispatch({
-                        type: 'LOGIN_FAIL',
-                        payload: error.response || 'Error while login',
-                    });
-                });
         } catch (error) {
             dispatch({
                 type: 'LOGIN_FAIL',
@@ -46,18 +45,16 @@ const logout = () => {
         };
         fetch(`${process.env.REACT_APP_FETCH_DOMAIN}/user/logout`, options)
             .then(response => response.json())
-            .then(data => {
+            .then(response => {
+                if (!response.success) {
+                    throw new Error(response.message || 'Failed to logout')
+                }
                 dispatch({
                     type: 'LOGOUT_SUCCESS',
-                    payload: data
+                    payload: response
                 })
             })
-            .catch(error => {
-                dispatch({
-                    type: 'LOGIN_FAIL',
-                    payload: error.response || 'Failed to logout'
-                })
-            })
+            .catch(error => dispatch({ type: 'LOGOUT_FAIL' }))
     }
 }
 const register = (userForm) => {
@@ -80,6 +77,12 @@ const register = (userForm) => {
         fetch(`${process.env.REACT_APP_FETCH_DOMAIN}/user/register`, options)
             .then(response => response.json())
             .then(response => {
+                if (!response.success) {
+                    return dispatch({
+                        type: 'REGISTER_FAIL',
+                        payload: response.message || 'Error while Registration',
+                    });
+                }
                 dispatch({
                     type: 'REGISTER_SUCCESS',
                     payload: response
