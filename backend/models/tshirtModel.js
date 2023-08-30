@@ -15,7 +15,6 @@ const tShirtSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ['Mens', 'Womens', 'All', 'Kids']
     },
     image: {
         public_id: {

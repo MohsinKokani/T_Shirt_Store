@@ -55,7 +55,7 @@ class userController {
                 url: myCloud?.secure_url || ''
             }
         }).then(result => {
-            const token = result.getPasswordToken();
+            const token = result.getToken();
             res.status(201).cookie('token', token, options).json({
                 success: true,
                 token,
@@ -82,7 +82,7 @@ class userController {
             if (userData) {
                 bcryptjs.compare(password, userData.password, function (err, isMatch) {
                     if (isMatch) {
-                        const token = userData.getPasswordToken();
+                        const token = userData.getToken();
                         res.cookie('token', token, options).json({
                             success: true,
                             token,

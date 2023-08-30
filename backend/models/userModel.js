@@ -51,7 +51,7 @@ const userSchema = mongoose.Schema({
     }
 })
 
-userSchema.methods.getPasswordToken = function () {
+userSchema.methods.getToken = function () {
     let token;
     try {
         token = jsonwebtoken.sign({ id: this._id }, process.env.SECRET_PRIVATE_KEY, {

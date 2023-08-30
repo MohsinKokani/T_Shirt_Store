@@ -20,7 +20,7 @@ userRoutes.put('/me/update', isAuth, userController.updateOwnDetails);
 userRoutes.put('/admin/update/:id', isAuth, isRole("admin"), userController.updateUserDetailsById);
 userRoutes.put('/updatePassword', isAuth, userController.updatePassword);
 
-userRoutes.delete('/delAll', userController.deleteall);
+userRoutes.delete('/delAll', isAuth, isRole('admin'), userController.deleteall);
 userRoutes.delete('/delById/:id', isAuth, isRole('admin'), userController.deleteById);
 
 export default userRoutes;
