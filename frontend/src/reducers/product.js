@@ -10,7 +10,6 @@ const prodReducer = (state = { products: [], filters, loading: false }, action) 
         case 'UPDATE_FILTERS':
             return {
                 ...state,
-                loding: false,
                 filters: action.payload
             }
         case 'ALL_PRODUCT_REQUEST':

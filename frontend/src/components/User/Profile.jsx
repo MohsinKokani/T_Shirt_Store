@@ -106,7 +106,7 @@ const Profile = () => {
                         option === 1 &&
                         <div className="inner" id='Account'>
                             <form encType='multipart/form-data' onSubmit={(e) => { e.preventDefault() }}>
-                                <h3>New Account?</h3>
+                                <h3>Your Details</h3>
                                 {
                                     edit &&
                                     <div className="form-holder">
