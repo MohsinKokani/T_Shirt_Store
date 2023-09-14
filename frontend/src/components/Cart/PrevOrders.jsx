@@ -29,7 +29,7 @@ const PrevOrders = () => {
                 <>
                     <h1 className="quantity" style={{ marginTop: '30vh' }}>Please Login First</h1>
                     <button className="button-1" style={{ display: 'block', margin: 'auto' }}
-                        onClick={() => navigate('/login?redirect=myorders')}>Login</button>
+                        onClick={() => navigate('/login')}>Login</button>
 
                 </>
             }

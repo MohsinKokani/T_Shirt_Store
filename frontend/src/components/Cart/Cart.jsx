@@ -41,7 +41,7 @@ const Cart = () => {
                 <>
                     <h1 className="quantity" style={{marginTop:'30vh'}}>Please Login First</h1>
                     <button className="button-1" style={{ display: 'block', margin: 'auto' }}
-                        onClick={() => navigate('/login?redirect=cart')}>Login</button>
+                        onClick={() => navigate('/login')}>Login</button>
                 </>
             }
             <div className="shopping-cart">

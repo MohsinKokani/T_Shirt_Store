@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { clearErrors } from '../../actions/product'
 import { login } from '../../actions/user'
 import womenImg from './img/women.png'
@@ -12,7 +12,6 @@ import './loginRegister.css'
 const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    let location = useLocation();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const { error, loading, isAuthenticated } = useSelector(state => state.user);
@@ -26,9 +25,8 @@ const Login = () => {
         //eslint-disable-next-line
     }, [error])
     useEffect(() => {
-        const redirect = location.search ? location.search.split('=')[1] : 'products';
         if (isAuthenticated) {
-            navigate(`/${redirect}`)
+            navigate(`/products`)
         }
         //eslint-disable-next-line
     }, [isAuthenticated]);

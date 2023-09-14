@@ -28,7 +28,7 @@ const ProductDetail = () => {
         // eslint-disable-next-line
     }, [error]);
     const handleAddToCart = () => {
-        if (!isAuthenticated) return navigate(`/login?redirect=products/${id}`);
+        if (!isAuthenticated) return navigate('/login');
         if (!selectedSize) return alert("please select size");
         dispatch(addToCart(id, selectedQuant, selectedSize));
     }
