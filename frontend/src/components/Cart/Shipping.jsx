@@ -115,8 +115,8 @@ const Shipping = () => {
                                 <select className="field__input" onChange={(e) => setState(e.target.value)}>
                                     <option value="Select State" />
                                     {
-                                        State.getStatesOfCountry(country).map(item => (
-                                            <option key={item.isoCode} value={item.isoCode}>{item.name}</option>
+                                        State.getStatesOfCountry(country).map((item, idx) => (
+                                            <option key={idx} value={item.isoCode}>{item.name}</option>
                                         ))
                                     }
                                 </select>

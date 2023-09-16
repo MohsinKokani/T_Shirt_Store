@@ -1,14 +1,17 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import './shipping.css'
-import Loader from '../assets/Loader.gif';
+import React, { useState } from 'react'
 import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { getMyOrderWithId } from '../../actions/order';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import Loader from '../assets/Loader.gif';
+import ReviewForm from '../Reviews/ReviewForm';
+import './shipping.css'
 const PrevOrder = () => {
     const { id } = useParams();
     const { loading, order } = useSelector(state => state.orders);
     const { isAuthenticated } = useSelector(state => state.user);
+    const [curReview, setCurReview] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     useEffect(() => {
@@ -22,6 +25,7 @@ const PrevOrder = () => {
     )
     return (
         <>
+            <ReviewForm productId={order.orderItems[curReview].product._id} />
             {
                 !isAuthenticated &&
                 !loading &&
@@ -30,7 +34,7 @@ const PrevOrder = () => {
                     <button
                         className="button-1"
                         style={{ display: 'block', margin: 'auto' }}
-                        onClick={() => navigate(`/login?redirect=myorders/${id}`)}>
+                        onClick={() => navigate('/login')}>
                         Login
                     </button>
                 </>
@@ -57,7 +61,7 @@ const PrevOrder = () => {
                     {
                         !loading &&
                         isAuthenticated &&
-                        order?.orderItems?.map(item =>
+                        order?.orderItems?.map((item, idx) =>
                             <div className="product" key={item._id}>
                                 <div className="product-image">
                                     <img src={item.product.image.url} alt='prod' />
@@ -78,6 +82,22 @@ const PrevOrder = () => {
                                     >
                                         {order.orderStatus}
                                     </button>
+                                    {
+                                        order.orderStatus === "Delivered" &&
+                                        <button
+                                            className="remove-product"
+                                            id='add-review-btn'
+                                            style={{ margin: '2px', backgroundColor: '#4CAF50' }}
+                                            onClick={() => {
+                                                setCurReview(idx);
+                                                var modal = document.getElementById("myModal");
+                                                modal.style.display = "block";
+                                            }}
+                                        >
+                                            Add Review
+                                        </button>
+
+                                    }
                                 </div>
                                 <div className="product-line-price">{item.quantity * item.product.price}</div>
                             </div>

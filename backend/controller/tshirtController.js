@@ -120,10 +120,10 @@ class tshirtController {
     }
     static addReview = (req, res) => {
         const { rating, comment, productId } = req.body;
-        if (!rating || !comment || !productId) return res.statuc(400).send("you miss spelled something/ all the fields are neccessary")
-        if (rating < 1 || rating > 5) return res.statuc(400).send("review shall be 0-5")
+        if (!rating || !comment || !productId) return res.status(400).send("you miss spelled something/ all the fields are neccessary")
+        if (rating < 1 || rating > 5) return res.status(400).send("review shall be 0-5")
         const review = {
-            userId: req.user.id,
+            userId: req.user?.id || req.user?._id || 'xyz',
             name: req.user.name,
             rating: Number(rating),
             comment
@@ -132,9 +132,9 @@ class tshirtController {
             .then(async product => {
                 if (!product) return res.status(404).send({ success: false, message: "Prouct not found with that id" });
                 let isAlreadyReviewed = false;
-                product.reviews.forEach(review => {
-                    if (review.userId.toString() === req.user.id) {
-                        review.rating = rating; review.comment = comment; review.name = req.user.name;
+                product.reviews.forEach(rev => {
+                    if (rev.userId?.toString() === req.user._id) {
+                        rev.rating = rating; rev.comment = comment; rev.name = req.user.name;
                         isAlreadyReviewed = true;
                         return;
                     }
@@ -143,10 +143,10 @@ class tshirtController {
                     product.reviews.push(review);
                 }
                 let totalPoints = 0;
-                product.reviews.forEach(review => {
-                    totalPoints += review.rating;
+                product.reviews.forEach(rev => {
+                    totalPoints += rev.rating;
                 })
-                product.ratings = totalPoints / product.reviews.length;
+                if (product.reviews.length != 0) product.ratings = totalPoints / product.reviews.length;
                 await product.save();
                 res.send({
                     success: true,
@@ -155,6 +155,7 @@ class tshirtController {
                 })
             })
             .catch(error => {
+                console.log(error)
                 res.send({
                     success: false,
                     message: "internal error while adding review",

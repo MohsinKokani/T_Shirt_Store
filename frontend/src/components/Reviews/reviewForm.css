@@ -1,0 +1,220 @@
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* inner form styling */
+#myModal {
+    width: 100%;
+    padding: 20px;
+    border-radius: 0.25rem;
+}
+
+@media (max-width: 500px) {
+    #myModal {
+        padding: 10px;
+    }
+}
+
+#fh2 {
+    padding: 2px 15px;
+    color: #ff4d4d;
+    text-align: center;
+
+
+}
+
+@media (max-width: 400px) {
+    #fh2 {
+        font-size: 20px;
+    }
+}
+
+
+#fh6 {
+    padding: 2px 15px;
+    text-align: center;
+    font-weight: normal;
+}
+
+@media (max-width: 400px) {
+    #fh6 {
+        font-size: 12px;
+    }
+}
+
+.pinfo {
+    margin: 8px auto;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #0d0d0d;
+}
+
+.review-form-group {
+    margin-bottom: 1rem;
+}
+
+.review-form-control {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    font-weight: bold;
+    color: #6C6262;
+    background-color: #fff;
+    background-image: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+
+.review-form-control::-ms-expand {
+    background-color: transparent;
+    border: 0;
+}
+
+.review-form-control:focus {
+    color: #696060;
+    background-color: #fff;
+    border-color: #5cb3fd;
+    outline: none;
+}
+
+
+select.review-form-control:not([size]):not([multiple]) {
+    height: calc(2.25rem + 2px);
+}
+
+select.review-form-control:focus::-ms-value {
+    color: green;
+    background-color: #fff;
+}
+
+.review-form-control-file,
+.review-form-control-range {
+    display: block;
+}
+
+.review-input-group {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+}
+
+
+.review-input-group .review-form-control:focus,
+.review-input-group .review-form-control:active,
+.review-input-group .review-form-control:hover {
+    z-index: 3;
+}
+
+.review-input-group-addon:not(:first-child):not(:last-child),
+.review-input-group-btn:not(:first-child):not(:last-child),
+.review-input-group .review-form-control:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+
+.review-input-group-addon,
+.review-input-group-btn {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.review-input-group-addon {
+    width: 45px;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.25;
+    color: #2e2e2e;
+    text-align: center;
+    background-color: #eceeef;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+
+
+
+
+.review-form-control+.review-input-group-addon:not(:first-child) {
+    border-left: 0;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.25;
+    width: 12rem;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #0275d8;
+    border-color: #0275d8;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #025aa5;
+    border-color: #01549b;
+    cursor: pointer;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+    -webkit-box-shadow: 0 0 0 2px rgba(2, 117, 216, 0.5);
+    box-shadow: 0 0 0 2px rgba(2, 117, 216, 0.5);
+}
