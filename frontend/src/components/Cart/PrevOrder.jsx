@@ -25,7 +25,7 @@ const PrevOrder = () => {
     )
     return (
         <>
-            <ReviewForm productId={order.orderItems[curReview].product._id} />
+            <ReviewForm productId={order.orderItems?.[curReview].product._id} />
             {
                 !isAuthenticated &&
                 !loading &&
